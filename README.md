@@ -2,6 +2,6 @@
 
 My personal repo where I put the items I have learnt
 
-## First Project
-
+Currently Working on:
 html
+python
