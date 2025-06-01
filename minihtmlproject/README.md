@@ -1,0 +1,1 @@
+small mini project to do after finishing html lesson
