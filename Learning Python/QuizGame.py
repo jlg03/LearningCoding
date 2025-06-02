@@ -6,7 +6,7 @@ questions = ("How many animals are in the periodic table",
 options = (("A. 116", "B. 117", "C. 118"),
            ("A. Whale", "B. Crocodile", "C. Ostrich"),
            ("A. Nitrogen", "B. Oxygen", "C. Hydrogen"))
-answers = ("C", "D", "A")
+answers = ("C", "C", "A")
 guesses = []
 score = 0
 quest_no = 0
