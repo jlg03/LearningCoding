@@ -3,5 +3,5 @@
 My personal repo where I put the items I have learnt
 
 Currently Working on:
-html
+css
 python
