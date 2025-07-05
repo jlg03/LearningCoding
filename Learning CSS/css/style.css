@@ -1,21 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.container{
-    border: 2px dashed red;
-    width: 400px;
-    padding: 1.5rem;
+body{
+    padding: 10%; 
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.circle{
-    margin: 3rem auto;
-    background-color: gold;
-    width: 100px;
-    height: 100px;
-    border: 2px solid #000;
-    border-radius: 50px;
-    outline: 2px solid red;
-    outline-offset: 0.25rem;
+p{
+    text-indent: 2em;
+    
 }
