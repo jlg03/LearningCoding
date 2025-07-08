@@ -1,17 +1,17 @@
-class Car:
-    def __init__(self, model, year, colour, for_sale):
-        self.model = model
-        self.year = year
-        self.colour = colour
-        self.for_sale = for_sale
+class Student:
     
-    def drive(self):
-        print(f"Your drive the car {self.model}")
-    def stop(self):
-        print(f"You stop the car {self.model}")
-
-car1 = Car("Mustang", 2024, "red", False)
-
-car1.drive()
-car1.stop()
+    class_year = 2024
+    num_students = 0
+    
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Student.num_students += 1
  
+student1 = Student("Spongebob", 30)
+student2 = Student("Patrick", 35)
+
+print(student1.)
+print(student2.name)
+
+print(Student.num_students) 
