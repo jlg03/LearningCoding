@@ -1,35 +1,30 @@
 class Animal:
-    def __init__(self, name):
-        self.name = name
-        self.is_alive = True
-        
     def eat(self):
-        print(f"{self.name} is eating")
-        
-    def sleep(self):
-        print(f"{self.name} is sleeping")
-        
+        print("This animal is eating")
 
-class Dog(Animal):
-    def speak(self):
-        print("Woof")
+class Prey(Animal):
+    def flee(self):
+        print(f"This animal is fleeing")
 
-class Cat(Animal):
-    def speak(self):
-        print("Meow")
+class Predator(Animal):
+    def hunt(self):
+        print(f"This animal is hunting")
 
-class Mouse(Animal):
-    def speak(self):
-        print("Squeak")
+class Rabbit(Prey):
+    pass
 
-dog = Dog("Scooby")
-cat = Cat("Garfield")
-mouse = Mouse("Mickey")
+class Hawk(Predator):
+    pass
 
-print(dog.name)
-print(dog.is_alive)
-dog.eat()
-dog.sleep()
-dog.speak()
-cat.speak()
-mouse.speak()
+class Fish(Prey, Predator):
+    pass
+
+rabbit = Rabbit()
+hawk = Hawk()
+fish = Fish()
+
+rabbit.flee()
+hawk.hunt()
+fish.flee()
+fish.hunt()
+rabbit.eat()
