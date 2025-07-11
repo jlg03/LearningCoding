@@ -1,14 +1,16 @@
 class Animal:
+    def __init__(self, name):
+        self.name = name
     def eat(self):
-        print("This animal is eating")
+        print(f"{self.name} is eating")
 
 class Prey(Animal):
     def flee(self):
-        print(f"This animal is fleeing")
+        print(f"{self.name} is fleeing")
 
 class Predator(Animal):
     def hunt(self):
-        print(f"This animal is hunting")
+        print(f"{self.name} is hunting")
 
 class Rabbit(Prey):
     pass
@@ -19,9 +21,9 @@ class Hawk(Predator):
 class Fish(Prey, Predator):
     pass
 
-rabbit = Rabbit()
-hawk = Hawk()
-fish = Fish()
+rabbit = Rabbit("Buggs")
+hawk = Hawk("Tony")
+fish = Fish("Nemo")
 
 rabbit.flee()
 hawk.hunt()
