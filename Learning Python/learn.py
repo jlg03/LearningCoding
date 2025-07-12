@@ -1,24 +1,31 @@
-class Employee:
-    def __init__(self, name, position):
+class Student:
+    count = 0
+    total_gpa = 0
+    
+    def __init__(self, name, gpa):
         self.name = name
-        self.position = position
-        
+        self.gpa = gpa
+        Student.count += 1
+        Student.total_gpa += gpa
+    
+    #instance method  
     def get_info(self):
-        return f"{self.name} = {self.position}"
+        return f"{self.name}: {self.gpa}"
     
-    @staticmethod
-    def is_valid_position(position):
-        valid_positions = ["Manager", "Cashier", "Cook", "Janitor"]
-        return position in valid_positions
+    @classmethod
+    def get_count(cls):
+        return f"Total number of students: {cls.count}"
     
-employee1 = Employee("Eugene", "Manager")
-employee2 = Employee("Squidward", "Cashier")
-employee3 = Employee("Spongebob", "Cook")
+    @classmethod
+    def get_gpa(cls):
+        if cls.count == 0:
+            return 0
+        else:
+            return f"Average GPA: {cls.total_gpa/cls.count:.2f}"
+    
 
-print(Employee.is_valid_position("Cook"))
-print(employee1.get_info())
-print(employee2.get_info())
-print(employee3.get_info())
-
-        
-        
+student1 = Student("Spongebob", 3.2)
+student2 = Student("Patrick", 2.0)
+student3 = Student("Sandy", 4.0)
+print(Student.get_count())
+print(Student.get_gpa())
