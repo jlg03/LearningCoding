@@ -1,55 +1,47 @@
-class Book:
-    def __init__(self, title, author, num_pages):
-        self.title = title
-        self.author = author
-        self.num_pages = num_pages
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+    
+    @property
+    def width(self):
+        return f"{self._width:.1f}cm"
+    
+    @property
+    def height(self):
+        return f"{self._height:.1f}cm"
 
-    def __str__(self):
-        return f"{self.title} by {self.author}"
-    
-    def __eq__(self, other):
-        return self.title == other.title and self.author == other.author
-    
-    def __lt__(self, other):
-        return self.num_pages < other.num_pages
-    
-    def __gt__(self, other):
-        return self.num_pages > other.num_pages
-    
-    def __add__(self, other):
-        return self.num_pages + other.num_pages
-    
-    def __contains__(self, keyword):
-        return keyword in self.title or keyword in self.author
-    
-    def __getitem__(self, key):
-        if key == "title":
-            return self.title
-        elif key == "author":
-            return self.author
-        elif key == "num_pages":
-            return self.num_pages
+    @width.setter
+    def width(self, new_width):
+        if new_width > 0:
+            self._width = new_width
+        else:
+            print("Width must be greater then 0")
+            
+    @height.setter
+    def height(self, new_height):
+        if new_height > 0:
+            self._height = new_height
+        else:
+            print("Height must be greater then 0")
         
-
-
-
-book1 = Book("The Hobbit", "J.R.R. Tolkien", 310)
-book2 = Book("Harry Potter and The Philosophers Stone", "J.K Rowling", 223)
-book3 = Book("The Lion, the Witch and the Wardrobe", "C.S. Lewis", 172)
-
-print(book1)
-print(book2)
-print(book3)
-
-print(book2 > book3)
-
-print(book2 + book3)
-
-print("Lion" in book3)
-print("Lion" in book1)
-
-print(book1['title'])
-print(book1["author"])
-print(book1["num_pages"])
-
+    @width.deleter
+    def width(self):
+        del self._width
+        print("Width deleted") 
         
+    @height.deleter
+    def height(self):
+        del self._height
+        print("Height deleted")  
+    
+    
+        
+rectangle = Rectangle(3, 4)
+
+rectangle.height = 0
+rectangle.width = 10
+rectangle.height = 5
+
+del rectangle.width
+del rectangle.height
