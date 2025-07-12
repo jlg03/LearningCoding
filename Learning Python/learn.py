@@ -1,54 +1,36 @@
+from abc import ABC, abstractmethod
+
 class Shape:
-    def __init__(self, colour, filled,):
-        self.colour = colour
-        self.filled = filled
-        
-    def describe(self):
-        print(f"It is {self.colour} and {'filled' if self.filled is True else 'not filled'}")
+    
+    @abstractmethod
+    def area(self):
+        pass
 
 class Circle(Shape):
-    def __init__(self, colour, filled, radius):
-        super().__init__(colour, filled)
+    def __init__(self, radius):
         self.radius = radius
-        
-    def describe(self):
-        print(f"It is a circle with an area of {3.14 * self.radius * self.radius}cm^2")
-        super().describe()
+    def area(self):
+        return 3.14 * self.radius ** 2
 
 class Square(Shape):
-    def __init__(self, colour, filled, width):
-        super().__init__(colour, filled)
-        self.width = width
-        
-    def describe(self):
-        print(f"It is a square with an area of {self.width * self.width}cm^2")
-        super().describe()
+    def __init__(self, side):
+        self.side = side
+    def area(self):
+        return self.side ** 2
 
 class Triangle(Shape):
-    def __init__(self, colour, filled, width, height):
-        super().__init__(colour, filled)
-        self.width = width
+    def __init__(self, base, height):
+        self.base = base
         self.height = height
-    def describe(self):
-        print(f"It is a triangle with an area of { self.width * self.height / 2  }cm^2")
-        super().describe()
-        
-        
-circle = Circle("red", True, 5)
-print(circle.colour)
-print(circle.filled)
-print(circle.radius)
-circle.describe()
-square = Square("Blue",False,6)
-print(square.colour)
-print(square.filled)
-print(square.width)
-square.describe()
-triangle = Triangle("green",True,7,8)
-print(triangle.colour)
-print(triangle.width)
-print(triangle.height)
-print(triangle.filled)
-triangle.describe()
+    def area(self):
+        return self.base * self.height * 0.5
+    
+class Pizza(Circle):
+    def __init__(self, topping, radius):
+        self.topping = topping
+        super().__init__(radius)
 
+shapes = [Circle(4), Square(5), Triangle(6, 7), Pizza("pepperoni", 15)]
 
+for shape in shapes:
+    print(shape.area())
