@@ -1,18 +1,13 @@
-def add_sprinkles(func):
-    def wrapper(*args, **kwargs):
-        print("You add sprinkles")
-        func(*args, **kwargs)
-    return wrapper
+try:
+    number = int(input("Enter a number: "))
+    print(1/number)
+except ZeroDivisionError:
+    print("You cant divide by zero")
+except ValueError:
+    print("Enter only numbers please")
+except Exception:
+    print("Something went wrong")
+finally:
+    print("Do some cleanup")
 
-def add_fudge(func):
-    def wrapper(*args, **kwargs):
-        print("You add fudge")
-        func(*args, **kwargs)
-    return wrapper    
-
-@add_sprinkles 
-@add_fudge
-def get_icecream(flavour):
-     print(f"Here is your ice {flavour} cream")
-     
-get_icecream("Vanilla")
+    
