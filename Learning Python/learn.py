@@ -1,13 +1,12 @@
-try:
-    number = int(input("Enter a number: "))
-    print(1/number)
-except ZeroDivisionError:
-    print("You cant divide by zero")
-except ValueError:
-    print("Enter only numbers please")
-except Exception:
-    print("Something went wrong")
-finally:
-    print("Do some cleanup")
+import os
 
-    
+file_path = "Learning Python/test.txt"
+
+if os.path.exists(file_path):
+    print(f"The location '{file_path}' exists")
+    if os.path.isfile(file_path):
+        print(f"That is a file")
+    elif os.path.isdir(file_path):
+        print("That is a directory")
+else:
+    print("That location doesnt exist")
