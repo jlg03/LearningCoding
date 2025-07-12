@@ -1,22 +1,24 @@
-class Animal:
-    alive = True
+class Employee:
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+        
+    def get_info(self):
+        return f"{self.name} = {self.position}"
     
-class Dog(Animal):
-    def speak(self):
-        print("Woof")
-        
-class Cat(Animal):
-    def speak(self):
-        print("Meow")
-        
-class Car:
+    @staticmethod
+    def is_valid_position(position):
+        valid_positions = ["Manager", "Cashier", "Cook", "Janitor"]
+        return position in valid_positions
     
-    alive = False
-    def speak(self):
-        print("Honk")
-        
-animals = [Dog(), Cat(), Car()]
+employee1 = Employee("Eugene", "Manager")
+employee2 = Employee("Squidward", "Cashier")
+employee3 = Employee("Spongebob", "Cook")
 
-for animal in animals:
-    animal.speak()
-    print(animal.alive)
+print(Employee.is_valid_position("Cook"))
+print(employee1.get_info())
+print(employee2.get_info())
+print(employee3.get_info())
+
+        
+        
