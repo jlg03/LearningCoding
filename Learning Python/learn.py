@@ -1,12 +1,15 @@
-import os
+employees = ["Eugene", "Squidward", "Spongebob", "Patrick"]
 
-file_path = "Learning Python/test.txt"
+txt_data = "I like pizza"
 
-if os.path.exists(file_path):
-    print(f"The location '{file_path}' exists")
-    if os.path.isfile(file_path):
-        print(f"That is a file")
-    elif os.path.isdir(file_path):
-        print("That is a directory")
-else:
-    print("That location doesnt exist")
+file_path = "output.txt"
+
+
+try:
+    with open(file_path, "w") as file:
+        for employee in employees:
+            file.write(employee + "\n")
+        print(f"File '{file_path}' created") 
+except FileExistsError:
+    print("That file already exists")
+
