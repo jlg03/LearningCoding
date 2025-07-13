@@ -1,15 +1,15 @@
-employees = ["Eugene", "Squidward", "Spongebob", "Patrick"]
+import json
 
-txt_data = "I like pizza"
+employee = {
+    "name": "Spongebob",
+    "age": 30,
+    "job": "cook"
+}
 
-file_path = "output.txt"
-
-
+file_path = "output.json"
 try:
     with open(file_path, "w") as file:
-        for employee in employees:
-            file.write(employee + "\n")
-        print(f"File '{file_path}' created") 
+        json.dump(employee, file, indent=4)
+        print(f"json file '{file_path}' was created")
 except FileExistsError:
-    print("That file already exists")
-
+    print("That file already exists ")
