@@ -1,30 +1,23 @@
-import threading
-import time
+import requests
 
+base_url = "https://pokeapi.co/api/v2"
 
-def walk_dog(first, last):
-    time.sleep(8)
-    print(f"You finished walking {first} {last}")
+def get_pokemon_info(name):
+    url = f"{base_url}/pokemon/{name}"
+    response = requests.get(url)
     
-def take_out_trash():
-    time.sleep(2)
-    print("You take out the trash")
     
-def get_mail():
-    time.sleep(4)
-    print("You get the mail")
+    if response.status_code == 200:
+        pokemon_data = response.json()
+        return pokemon_data
+    else:
+        print(f"Failed to retrieve data {response.status_code}")
 
-chore1 = threading.Thread(target=walk_dog, args=("Scooby", "Doo"))
-chore1.start()
-chore2 = threading.Thread(target=take_out_trash)
-chore2.start()
-chore3 = threading.Thread(target=get_mail)
-chore3.start()
+pokemon_name = "typhlosion"
+pokemon_info = get_pokemon_info(pokemon_name)
 
-chore1.join()
-chore2.join()
-chore3.join()
-
-print("All chores completed")
-
-    
+if pokemon_info:
+    print(f"Name: {pokemon_info["name"].capitalize()}")
+    print(f"ID: {pokemon_info["id"]}")
+    print(f"Height: {pokemon_info["height"]}")
+    print(f"Weight: {pokemon_info["weight"]}")
