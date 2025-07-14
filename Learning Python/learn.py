@@ -1,18 +1,22 @@
-import csv
+import datetime
+ 
+date = datetime.date(2025, 1, 2)
+today = datetime.date.today()
 
-employees = [["Name", "Age", "Job"],
-             ["Spongebob", 30, "Cook"],
-             ["Patrick", 37, "Unemployed"],
-             ["Sandy", 27, "Scientist"]]
+time = datetime.time(12, 30, 0)
+now = datetime.datetime.now()
 
-file_path = "output.csv"
+now = now.strftime("%H:%M:%S %d-%m-%Y")
 
+print(date)
+print(today)
+print(time)
+print(now)
 
-try:
-    with open(file_path, "w") as file:
-        writer = csv.writer(file)
-        for row in employees:
-            writer.writerow(row)
-        print(f"csv file '{file_path}' was created")
-except FileExistsError:
-    print("That file already exists ")
+target_datetime = datetime.datetime(2020, 1, 2, 12, 30, 1)
+current_datetime = datetime.datetime.now()
+
+if target_datetime < current_datetime:
+    print("Target date has passed")
+else:
+    print("Target date has NOT passed")
