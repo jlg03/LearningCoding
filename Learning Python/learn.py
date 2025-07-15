@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
-from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -9,32 +9,18 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My First GUI")
         self.setGeometry(0, 0, 500, 500)
         
-        label = QLabel("Hello", self)
-        label.setFont(QFont("Arial", 40))
-        label.setGeometry(0, 0, 500, 100)
-        label.setStyleSheet("color: blue;"
-                            "background-color: red;"
-                            "font-weight: bold;"
-                            "font-style: italic;"
-                            "text-decoration: underline;")
-        # label.setAlignment(Qt.AlignTop)
-        # label.setAlignment(Qt.AlignBottom)
-        # label.setAlignment(Qt.AlignVCenter)
-        # label.setAlignment(Qt.AlignRight)
-        # label.setAlignment(Qt.AlignTop)
-        # label.setAlignment(Qt.AlignHCenter)
-        # label.setAlignment(Qt.AlignLeft)
+        label = QLabel(self)
+        label.setGeometry(0, 0, 250, 250)
         
-        # label.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-        # label.setAlignment(Qt.AlignHCenter | Qt.AlignBottom)
-        # label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-        label.setAlignment(Qt.AlignCenter)
-
-
-
-
+        pixmap = QPixmap("image file path")
+        label.setPixmap(pixmap)
         
-        
+        label.setScaledContents(True)
+        label.setGeometry((self.width() - label.width()) // 2, 
+                          (self.height() - label.height()) // 2, 
+                          label.width(), 
+                          label.height())
+
 def main():
     app = QApplication(sys.argv)
     window = MainWindow()
