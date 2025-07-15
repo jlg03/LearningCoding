@@ -1,27 +1,28 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setGeometry(0, 0, 500, 500)
+        self.label = QLabel("Hello", self)
         self.initUI()
         
     def initUI(self):
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+        self.button = QPushButton("Click me", self)
+        self.button.setGeometry(150, 200, 200, 100)
+        self.button.setStyleSheet("font-size: 30px;")
+        self.button.clicked.connect(self.on_click)
         
-        label1 = QLabel("#1", self)
+        self.label.setGeometry(150, 300, 200, 100)
+        self.label.setStyleSheet("font-size: 50px;")
         
-        label1.setStyleSheet("background-color: red;")
-        
-        vbox = QVBoxLayout()
-        
-        vbox.addWidget(label1)
-        
-        central_widget.setLayout(vbox)
+    def on_click(self):
+        print("button clicked")
+        self.button.setText("clicked")
+        self.button.setDisabled(True)
+        self.label.setText("Goodbye")
 
 def main():
     app = QApplication(sys.argv)
