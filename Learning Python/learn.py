@@ -1,25 +1,27 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout
 from PyQt5.QtGui import QPixmap
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("My First GUI")
         self.setGeometry(0, 0, 500, 500)
+        self.initUI()
         
-        label = QLabel(self)
-        label.setGeometry(0, 0, 250, 250)
+    def initUI(self):
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
         
-        pixmap = QPixmap("image file path")
-        label.setPixmap(pixmap)
+        label1 = QLabel("#1", self)
         
-        label.setScaledContents(True)
-        label.setGeometry((self.width() - label.width()) // 2, 
-                          (self.height() - label.height()) // 2, 
-                          label.width(), 
-                          label.height())
+        label1.setStyleSheet("background-color: red;")
+        
+        vbox = QVBoxLayout()
+        
+        vbox.addWidget(label1)
+        
+        central_widget.setLayout(vbox)
 
 def main():
     app = QApplication(sys.argv)
