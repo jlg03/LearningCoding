@@ -1,28 +1,28 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QCheckBox
+from PyQt5.QtCore import Qt
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setGeometry(0, 0, 500, 500)
-        self.label = QLabel("Hello", self)
+        self.checkbox = QCheckBox("Do you like food?", self)
         self.initUI()
         
     def initUI(self):
-        self.button = QPushButton("Click me", self)
-        self.button.setGeometry(150, 200, 200, 100)
-        self.button.setStyleSheet("font-size: 30px;")
-        self.button.clicked.connect(self.on_click)
+        self.checkbox.setStyleSheet("font-size: 30px;"
+                                    "font-family: Arial;")
+        self.checkbox.setGeometry(10, 0, 500, 100)
+        self.checkbox.setChecked(False)
         
-        self.label.setGeometry(150, 300, 200, 100)
-        self.label.setStyleSheet("font-size: 50px;")
+        self.checkbox.stateChanged.connect(self.checkbox_changed)
         
-    def on_click(self):
-        print("button clicked")
-        self.button.setText("clicked")
-        self.button.setDisabled(True)
-        self.label.setText("Goodbye")
+    def checkbox_changed(self, state):
+        if state == Qt.Checked:
+            print("You like food")
+        else:
+            print("You do not like food")
 
 def main():
     app = QApplication(sys.argv)
