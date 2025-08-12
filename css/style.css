@@ -1,4 +1,32 @@
+
+body{
+  font-size: 22px;
+}
+
+main{
+  font-family: monospace;
+}
+
+h1, h2{
+  color: blue;
+}
+
 p{
   color: purple;
-  font-size: 40px;
 }
+
+.highlight{
+  text-transform: uppercase;
+  background-color: gold;
+}
+
+/* class selector, more specific */
+.gray{
+  color: gray;
+} 
+
+/* id, must be unique, most specific */
+#second {
+  font-style: italic;
+}
+
