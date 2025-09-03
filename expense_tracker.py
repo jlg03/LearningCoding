@@ -1,8 +1,8 @@
-import datetime
+from datetime import date, datetime
 
 
 
-def main_menu(list_expeses):
+def main_menu(list_expenses):
     print("Select what you want to do")
     print()
     print("1. Add an expense")
@@ -25,56 +25,70 @@ def main_menu(list_expeses):
         amount = float(input("Enter amount: "))
         add_expense(description=description, amount=amount, list_expenses=list_expenses)
     elif user_selection == "2":
-        list_expense(date=, list_expenses=list_expenses)
-        update_expense(date=, id=, amount=,  list_expenses=list_expenses)
-    elif user_selection == "3":
-        list_expense(date=,  list_expenses=list_expenses)
-        delete_expense(date=, id=,  list_expenses=list_expenses)
-    elif user_selection == "4":
-        list_expense(list_expenses=list_expenses)
-    elif user_selection == "5":
-        total_expense(list_expenses=list_expenses)
-    elif user_selection == "6":
-        total_expense_month(month=, list_expenses=list_expenses)
-    elif user_selection == "7":
-        quit()
+        selected_date = input("Select a date (YYYY-MM-DD): ")
+        convert_format = datetime.strptime(selected_date, "%Y-%m-%d").date()
+        
+        list_expense(date= convert_format, list_expenses=list_expenses)
+        selected_id = int(input("Select an ID number: "))
+        new_amount = float(input("Enter the new amount: "))
+        update_expense(date=convert_format, id=selected_id, amount=new_amount,  list_expenses=list_expenses)
+    # elif user_selection == "3":
+    #     list_expense(date=,  list_expenses=list_expenses)
+    #     delete_expense(date=, id=,  list_expenses=list_expenses)
+    # elif user_selection == "4":
+    #     list_expense(list_expenses=list_expenses)
+    # elif user_selection == "5":
+    #     total_expense(list_expenses=list_expenses)
+    # elif user_selection == "6":
+    #     total_expense_month(month=, list_expenses=list_expenses)
+    # elif user_selection == "7":
+    #     quit()
     else:
         print("That was an invalid input")
     
     
 
 def add_expense(description, amount, list_expenses):
-    
-    # id number = 1
-    # date = getdate
-    # if date already exist in list
-    #     id number =  last current id number + 1
-    #     add description and amount to list
-    #     return list back to main menu
-    # else
-    #     create list
-    #     add id, date, description, amount
-    #     return list back to main menu
-    
-    # list needs: 
-    # ID  date  description amount
-    
+    id_number = 1
+    today_date = date.today()
+    if len(list_expenses) == 0:
+        list_expenses.append([today_date,[id_number, description, amount]])
+        print(f"Added successfully (ID: {id_number})")
+        main_menu(list_expenses=list_expenses)
+    else:
+        for index in range(len(list_expenses)):
+            if today_date == list_expenses[index][0]:
+                id_number = len(list_expenses[index])
+                list_expenses[index].append([id_number, description, amount])
+                print(f"Added successfully (ID: {id_number})")
+                main_menu(list_expenses=list_expenses)
+            else:
+                list_expenses.append([today_date,[id_number, description, amount]])
+                print(f"Added successfully (ID: {id_number})")
+                main_menu(list_expenses=list_expenses)    
     
 def list_expense(date, list_expenses):
+    for index in range(len(list_expenses)):
+            if date == list_expenses[index][0]:
+                print(list_expenses[index])
     # if date not empty list expenses for selected date
     # else list all expenses recorded
     
-def total_expense_month(month, list_expenses):
-    # list all expenses of the selected month of the current year
+# def total_expense_month(month, list_expenses):
+#     # list all expenses of the selected month of the current year
     
-def total_expense(list_expenses):
-    # list all expenses ever made
+# def total_expense(list_expenses):
+#     # list all expenses ever made
     
 def update_expense(date, id, amount, list_expenses):
+    for index in range(len(list_expenses)):
+            if date == list_expenses[index][0]:
+                print(list_expenses[index][id])
+    
     # from the chosen date and id update the amount that was selected
     
-def delete_expense(date, id, list_expenses):
-    # from the selected date and id delete the specific amount
+# def delete_expense(date, id, list_expenses):
+#     # from the selected date and id delete the specific amount
 
 
 list_expenses = []
