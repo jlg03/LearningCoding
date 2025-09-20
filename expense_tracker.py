@@ -32,9 +32,12 @@ def main_menu(list_expenses):
         selected_id = int(input("Select an ID number: "))
         new_amount = float(input("Enter the new amount: "))
         update_expense(date=convert_format, id=selected_id, amount=new_amount,  list_expenses=list_expenses)
-    # elif user_selection == "3":
-    #     list_expense(date=,  list_expenses=list_expenses)
-    #     delete_expense(date=, id=,  list_expenses=list_expenses)
+    elif user_selection == "3":
+        selected_date = input("Select a date (YYYY-MM-DD): ")
+        convert_format = datetime.strptime(selected_date, "%Y-%m-%d").date()
+        list_expense(date=convert_format,  list_expenses=list_expenses)
+        selected_id = int(input("Select an ID number to remove: "))
+        delete_expense(date=convert_format, id=selected_id,  list_expenses=list_expenses)
     # elif user_selection == "4":
     #     list_expense(list_expenses=list_expenses)
     # elif user_selection == "5":
@@ -86,13 +89,13 @@ def update_expense(date, id, amount, list_expenses):
                 if id == list_expenses[index][1][0]:
                     list_expenses[index][1][2] = amount
                     main_menu(list_expenses=list_expenses)
-                    
+                        
+def delete_expense(date, id, list_expenses):
+    for index in range(len(list_expenses)):
+            if date == list_expenses[index][0]:
+                if id == list_expenses[index][1][0]:
+                    list_expenses.remove(list_expenses[index])
                 
-    
-    # from the chosen date and id update the amount that was selected
-    
-# def delete_expense(date, id, list_expenses):
-#     # from the selected date and id delete the specific amount
 
 
 list_expenses = []
