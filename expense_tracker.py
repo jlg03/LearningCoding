@@ -83,7 +83,11 @@ def list_expense(date, list_expenses):
 def update_expense(date, id, amount, list_expenses):
     for index in range(len(list_expenses)):
             if date == list_expenses[index][0]:
-                print(list_expenses[index][id])
+                if id == list_expenses[index][1][0]:
+                    list_expenses[index][1][2] = amount
+                    main_menu(list_expenses=list_expenses)
+                    
+                
     
     # from the chosen date and id update the amount that was selected
     
