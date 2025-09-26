@@ -6,10 +6,18 @@ body{
     font-family: "Roboto", sans-serif;
 }
 
-/* input, button{
-    font:inherit;
+a {
+    color: black;
+}
+
+/* a:visited{
+    color: green
 } */
 
-p {
-     
+a:hover{
+    color: azure;
+}
+
+a:active{
+    color: aquamarine;
 }
