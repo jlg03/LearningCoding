@@ -1,19 +1,32 @@
-html {
-    font-size: 22px;
+@import url('https://fontx.googleapis.com/css2?family=Gufaz+One&family=Nunito&display=swap');
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
-th, td, caption {
-    border: 1px solid #333;
-    font-family: 'Courier New', Courier, monospace;
-    border-collapse: separate;
-    padding: 0.5rem;
+input, button, textarea{
+    font:inherit;
 }
+
+:root {
+    --FF: "Nunito", sans-serif;
+    --FF-HEADINGS: "Fugaz One", cursive;
+    --FS: clamp(1rem, 2.2vh, 1.5rem);
+
+    --BGCOLOR: orange;
+    --BGCOLOR-FADE: rgb(252, 220, 160);
+    --BGIMAGE: linear-gradient(to bottom, (var(--BGCOLOR)), var(--BGCOLOR-FADE));
+    --BODY_BGCOLOR: #FFF;
+    --FONT-COLOR: #000;
+}
+
